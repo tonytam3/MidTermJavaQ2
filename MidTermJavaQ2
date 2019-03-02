@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+class MidTermJavaQ2 {
+
+  public static void main(String[] args) {
+    Scanner input = new Scanner(System.in);
+
+    System.out.println("What is the desire size of your array\n");
+    int size = input.nextInt();
+
+    double array[] = new double[size];
+
+    int n=0;
+
+    do{
+      System.out.println("Please enter the desire number.\n");
+      double number = input.nextDouble();
+      array[n]= number;
+      n++;
+    }while(n<size);
+
+    for(int i=0; i<array.length;i++){
+      System.out.print("Index: "+i+"; Variable:"+array[i]+"\n");
+    }
+
+    selectSort(array,size);
+
+    System.out.println("\nThe smalled number here is: "+array[0]+". The largest number here is: "+array[size-1]+'.');
+
+
+    input.close();
+  }
+
+  private static void selectSort (double array[],int size){
+    for(int i=0; i<size-1;i++){
+      int minIndex = i;
+      for(int j=i+1; j<size; j++){
+        if(array[j]<array[minIndex]){
+          minIndex=j;
+        }
+      }
+      swap(array, i, minIndex);
+    }
+  } 
+
+  private static void swap(double array[],int i, int minIndex){
+  double temp = array[i];
+  array[i]=array[minIndex];
+  array[minIndex]=temp;
+  }
+
+}
+
+
+
